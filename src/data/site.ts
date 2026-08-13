@@ -29,8 +29,8 @@ export const rooms = [
     span: "normal",
   },
   {
-    id: "shared-room",
-    title: "The Shared Room",
+    id: "shared-balcony",
+    title: "The Shared Balcony",
     subtitle: "Thangka above the hearth chair",
     image: "/images/shared.jpg",
     span: "normal",
