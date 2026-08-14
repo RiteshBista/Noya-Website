@@ -172,5 +172,5 @@ export const contact = {
   phone: "+977 980-320-0076",
   phoneHref: "tel:+9779803200076",
   checkIn: "14:00",
-  checkOut: "11:00",
+  checkOut: "12:00",
 };

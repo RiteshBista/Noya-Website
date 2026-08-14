@@ -5,7 +5,9 @@ export default function Footer() {
     <footer className="relative bg-[var(--color-ink-2)] border-t border-[var(--color-hairline-2)] px-6 md:px-10 py-16">
       <div className="mx-auto max-w-[1280px] grid grid-cols-1 md:grid-cols-4 gap-12">
         <div>
-          <span className="font-display italic text-2xl text-[var(--color-paper)]">NOYA</span>
+          <span>
+              <img src="images/noya-logo.png" alt="Noya Logo" className="h-5 w-auto" />
+          </span>
           <p className="mt-4 text-sm leading-relaxed text-[var(--color-paper-faint)] max-w-[220px]">
             A restored 18th-century heritage home in Gairidhara, Kathmandu.
           </p>

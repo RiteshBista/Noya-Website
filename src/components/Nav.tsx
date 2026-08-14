@@ -8,8 +8,8 @@ export default function Nav() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 2.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
-      <a href="#top" className="font-display italic text-xl text-[var(--color-paper)]">
-        NOYA
+      <a href="#top" >
+        <img src="images/noya-logo.png" alt="Noya Logo" className="h-5 w-auto" />
       </a>
       <nav className="hidden md:flex items-center gap-8 eyebrow tracking-[0.28em]">
         <a href="#rooms" className="hover:text-[var(--color-paper)] transition-colors">Rooms</a>

@@ -13,7 +13,7 @@ export default function Guestbook() {
           <span className="eyebrow" style={{ color: "var(--color-rose)" }}>
             The Guestbook
           </span>
-          <h2 className="mt-4 font-display italic text-[clamp(28px,4vw,44px)] text-[var(--color-paper)] max-w-xl">
+          <h2 className="mt-4 font-display text-[clamp(28px,4vw,44px)] text-[var(--color-paper)] max-w-xl">
             Notes left by people who stayed.
           </h2>
         </div>
@@ -27,7 +27,7 @@ export default function Guestbook() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.08 }}
             >
-              <blockquote className="font-display italic text-lg md:text-xl leading-snug text-[var(--color-paper)]">
+              <blockquote className="font-display text-lg md:text-xl leading-snug text-[var(--color-paper)]">
                 &ldquo;{note.quote}&rdquo;
               </blockquote>
               <figcaption className="mt-5 flex items-center gap-3">

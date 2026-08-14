@@ -31,7 +31,7 @@ export default function Hero() {
             A house that was
           </motion.span>
           <motion.span
-            className="block font-display italic text-[clamp(38px,7vw,76px)] leading-[1.1] text-[var(--color-sage)]"
+            className="block font-display text-[clamp(38px,7vw,76px)] leading-[1.1] text-[var(--color-sage)]"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.9, duration: 1, ease }}

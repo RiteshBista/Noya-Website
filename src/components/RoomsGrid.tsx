@@ -18,11 +18,17 @@ function Tile({ room, index }: { room: Room; index: number }) {
       ref={ref}
       href="#stay"
       className={`group relative block overflow-hidden border ${
-        room.featured ? "border-[var(--color-sage)]/40" : "border-[var(--color-hairline)]"
+        room.featured
+          ? "border-[var(--color-sage)]/40"
+          : "border-[var(--color-hairline)]"
       } ${spanClass[room.span] ?? "md:col-span-4"} min-h-[260px] md:min-h-[280px]`}
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay: (index % 4) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      transition={{
+        duration: 0.7,
+        delay: (index % 4) * 0.08,
+        ease: [0.16, 1, 0.3, 1],
+      }}
     >
       <img
         src={room.image}
@@ -37,7 +43,7 @@ function Tile({ room, index }: { room: Room; index: number }) {
         </span>
       )}
       <div className="absolute bottom-0 left-0 p-5 md:p-6">
-        <h3 className="font-display italic text-2xl md:text-3xl text-[var(--color-paper)]">
+        <h3 className="font-display text-2xl md:text-3xl text-[var(--color-paper)]">
           {room.title}
         </h3>
         <p className="mt-1 text-xs text-[var(--color-paper-dim)] tracking-wide">
@@ -50,9 +56,12 @@ function Tile({ room, index }: { room: Room; index: number }) {
 
 export default function RoomsGrid() {
   return (
-    <section id="rooms" className="relative bg-[var(--color-ink)] py-24 md:py-36 px-6 md:px-10">
+    <section
+      id="rooms"
+      className="relative bg-[var(--color-ink)] py-24 md:py-36 px-6 md:px-10"
+    >
       <div className="mx-auto max-w-[1280px]">
-        <div className="mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        {/* <div className="mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
             <span className="eyebrow">The House</span>
             <h2 className="mt-4 font-display italic text-[clamp(28px,4vw,44px)] text-[var(--color-paper)] max-w-lg">
@@ -63,6 +72,20 @@ export default function RoomsGrid() {
             Every room was restored on its own terms — the same stone floors
             and hand-plastered walls, dressed differently in each. Nothing
             here is a backdrop; it's simply how the house looks.
+          </p>
+        </div> */}
+        <div className="mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div>
+            <span className="eyebrow">The House</span>
+            <h2 className="mt-4 font-display text-[clamp(28px,4vw,44px)] text-[var(--color-paper)] max-w-lg">
+              A house shaped by time.
+            </h2>
+          </div>
+
+          <p className="max-w-sm text-sm leading-relaxed text-[var(--color-paper-dim)]">
+            Restored with care and lived in slowly, each room carries its own
+            character through stone, wood, textiles, light, and the traces of
+            another time.
           </p>
         </div>
 

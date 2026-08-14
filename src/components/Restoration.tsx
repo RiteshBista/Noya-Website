@@ -54,7 +54,7 @@ export default function Restoration() {
       <div className="mx-auto max-w-[1280px]">
         <div className="mb-16 md:mb-24">
           <span className="eyebrow">The Restoration</span>
-          <h2 className="mt-4 font-display italic text-[clamp(28px,4vw,44px)] text-[var(--color-paper)] max-w-xl">
+          <h2 className="mt-4 font-display text-[clamp(28px,4vw,44px)] text-[var(--color-paper)] max-w-xl">
             Three decisions, made in order.
           </h2>
         </div>
@@ -78,7 +78,7 @@ export default function Restoration() {
                 </div>
               </div>
               <div className="restoration-text md:col-span-5 md:[direction:ltr]">
-                <span className="font-display italic text-5xl text-[var(--color-sage)]">
+                <span className="font-display text-5xl text-[var(--color-sage)]">
                   {step.mark}
                 </span>
                 <h3 className="mt-4 text-[clamp(20px,2.5vw,28px)] font-normal text-[var(--color-paper)]">

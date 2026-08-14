@@ -51,7 +51,7 @@ export default function Faq() {
       <div className="mx-auto max-w-[860px]">
         <div className="mb-14 text-center">
           <span className="eyebrow">Questions</span>
-          <h2 className="mt-4 font-display italic text-[clamp(28px,4vw,44px)] text-[var(--color-paper)]">
+          <h2 className="mt-4 font-display text-[clamp(28px,4vw,44px)] text-[var(--color-paper)]">
             Before you write to us.
           </h2>
         </div>

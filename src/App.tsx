@@ -12,7 +12,7 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="bg-[var(--color-ink)]">
+    <div className="bg-ink">
       <Loader />
       <Nav />
       <main>

@@ -16,7 +16,7 @@ export default function FinalCta() {
         <h2 className="mt-6 font-sans font-light text-[clamp(28px,5vw,48px)] leading-[1.1] text-[var(--color-paper)]">
           Ready to stay?
         </h2>
-        <h2 className="font-display italic text-[clamp(34px,6.5vw,64px)] leading-[1.1] text-[var(--color-sage)]">
+        <h2 className="font-display text-[clamp(34px,6.5vw,64px)] leading-[1.1] text-[var(--color-sage)]">
           Or still reading the reviews?
         </h2>
 
@@ -33,7 +33,7 @@ export default function FinalCta() {
           {Array.from({ length: 2 }).map((_, i) => (
             <span
               key={i}
-              className="font-display italic text-2xl md:text-3xl text-[var(--color-paper-faint)] pr-8 whitespace-nowrap"
+              className="font-display text-2xl md:text-3xl text-[var(--color-paper-faint)] pr-8 whitespace-nowrap"
             >
               {marqueeText.repeat(4)}
             </span>

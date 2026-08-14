@@ -7,7 +7,7 @@ export default function Rates() {
       <div className="mx-auto max-w-[1280px]">
         <div className="mb-14 text-center md:text-left">
           <span className="eyebrow">Rates</span>
-          <h2 className="mt-4 font-display italic text-[clamp(28px,4vw,44px)] text-[var(--color-paper)]">
+          <h2 className="mt-4 font-display text-[clamp(28px,4vw,44px)] text-[var(--color-paper)]">
             Three rooms, three ways to stay.
           </h2>
         </div>
@@ -32,7 +32,7 @@ export default function Rates() {
                 </span>
               )}
               <span className="eyebrow">{tier.eyebrow}</span>
-              <h3 className="mt-3 font-display italic text-2xl text-[var(--color-paper)]">
+              <h3 className="mt-3 font-display text-2xl text-[var(--color-paper)]">
                 {tier.name}
               </h3>
               <div className="mt-6 flex items-baseline gap-2">

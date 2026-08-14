@@ -20,12 +20,11 @@ export default function Loader() {
         >
           <div className="flex flex-col items-center gap-4">
             <motion.span
-              className="font-display italic text-[var(--color-paper)] text-5xl tracking-wide"
               initial={{ opacity: 0, letterSpacing: "0.5em" }}
               animate={{ opacity: 1, letterSpacing: "0.05em" }}
               transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
             >
-              NOYA
+              <img src="images/noya-logo.png" alt="Noya Logo" className="h-5 w-auto" />
             </motion.span>
             <motion.span
               className="eyebrow"
