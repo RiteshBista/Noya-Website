@@ -41,22 +41,19 @@ export const restorationSteps = [
   {
     mark: "I",
     title: "What was found",
-    body:
-      "Behind later additions, the original stone and timber of the 1920s house remained largely intact — cracked by the 2015 earthquake, but standing. Restoration began with what the building had already decided to keep.",
+    body: "Behind later additions, the original stone and timber of the 1920s house remained largely intact — cracked by the 2015 earthquake, but standing. Restoration began with what the building had already decided to keep.",
     image: "/images/facade-day.jpg",
   },
   {
     mark: "II",
     title: "What was kept",
-    body:
-      "Floors were re-laid in the same dark timber. Walls were re-plastered by hand, in the same lime render. Where a beam could be saved, it was saved. Nothing was stripped for the sake of a clean surface.",
+    body: "Floors were re-laid in the same dark timber. Walls were re-plastered by hand, in the same lime render. Where a beam could be saved, it was saved. Nothing was stripped for the sake of a clean surface.",
     image: "/images/courtyard-corridor.jpg",
   },
   {
     mark: "III",
     title: "What was added",
-    body:
-      "Furniture and artifacts were gathered slowly, over years — thangka paintings, porcelain lamps, a rotary telephone that no longer works. Additions sit alongside the original structure, not over it.",
+    body: "Furniture and artifacts were gathered slowly, over years — thangka paintings, porcelain lamps, a rotary telephone that no longer works. Additions sit alongside the original structure, not over it.",
     image: "/images/drawing-room-2.jpg",
   },
 ];
@@ -170,7 +167,10 @@ export const faqs = [
 export const contact = {
   address: "327 Gairidhara Road, Kathmandu 44600, Nepal",
   phone: "+977 980-320-0076",
+  email: "Contact@noya.com.np",
   phoneHref: "tel:+9779803200076",
+  emailHref:
+  "https://mail.google.com/mail/?view=cm&fs=1&to=contact@noya.com.np&su=NOYA%20Enquiry",
   checkIn: "14:00",
   checkOut: "12:00",
 };
