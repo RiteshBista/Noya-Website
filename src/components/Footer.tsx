@@ -12,7 +12,8 @@ export default function Footer() {
               className="h-5 w-auto"
             />
           </span>
-          <p className="mt-4 text-sm leading-relaxed text-[var(--color-paper-faint)] max-w-[220px]">
+          <p className="mt-4 text-sm leading-relaxed text-[var(--color-paper-dim)] max-w-[220px]">
+            ART · HERITAGE · HISTORY <br />
             A restored 18th-century heritage home in Gairidhara, Kathmandu.
           </p>
         </div>
