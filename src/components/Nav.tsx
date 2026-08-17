@@ -14,11 +14,10 @@ export default function Nav() {
       <nav className="hidden md:flex items-center gap-8 eyebrow tracking-[0.28em]">
         <a href="#rooms" className="hover:text-[var(--color-paper)] transition-colors">Rooms</a>
         <a href="#restoration" className="hover:text-[var(--color-paper)] transition-colors">Restoration</a>
-        {/* <a href="#stay" className="hover:text-[var(--color-paper)] transition-colors">Rates</a> */}
         <a href="#faq" className="hover:text-[var(--color-paper)] transition-colors">FAQ</a>
       </nav>
       <a
-        href="#stay"
+        href="tel:123-456-7890"
         className="border border-[var(--color-hairline)] px-4 py-2 text-xs tracking-[0.2em] uppercase text-[var(--color-paper)] hover:border-[var(--color-sage)] hover:text-[var(--color-sage)] transition-colors"
       >
         Reserve
