@@ -1,9 +1,17 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import HlsBackground from "./HlsBackground";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function Hero() {
+  const [showIntro, setShowIntro] = useState(true);
+
+  useEffect(() => {
+    const t = setTimeout(() => setShowIntro(false), 5900);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <section id="top" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
       <HlsBackground poster="/images/hero-exterior-night.jpg" />
@@ -22,29 +30,46 @@ export default function Hero() {
         </motion.span>
 
         <h1 className="max-w-3xl text-[var(--color-paper)]">
-          <motion.span
-            className="block font-sans font-light text-[clamp(30px,5vw,54px)] leading-[1.08]"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.7, duration: 1, ease }}
-          >
-            A house that was
-          </motion.span>
-          <motion.span
-            className="block font-display text-[clamp(38px,7vw,76px)] leading-[1.1] text-[var(--color-sage)]"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.9, duration: 1, ease }}
-          >
-            restored, not renovated.
-          </motion.span>
+          <AnimatePresence mode="wait">
+            {showIntro ? (
+              <motion.span
+                key="intro"
+                className="block font-display text-[clamp(16px,2.2vw,22px)] uppercase tracking-[0.4em] text-[var(--color-paper)]"
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12, transition: { duration: 0.5, ease } }}
+                transition={{ delay: 2.7, duration: 1, ease }}
+              >
+                ART &middot; HERITAGE &middot; HISTORY
+              </motion.span>
+            ) : (
+              <motion.span key="content" className="block">
+                <motion.span
+                  className="block font-sans font-light text-[clamp(30px,5vw,54px)] leading-[1.08]"
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, ease }}
+                >
+                  A house that was
+                </motion.span>
+                <motion.span
+                  className="block font-display text-[clamp(38px,7vw,76px)] leading-[1.1] text-[var(--color-sage)]"
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 1, ease }}
+                >
+                  restored, not renovated.
+                </motion.span>
+              </motion.span>
+            )}
+          </AnimatePresence>
         </h1>
 
         <motion.p
           className="mt-7 max-w-md text-[15px] leading-relaxed text-[var(--color-paper-dim)]"
           initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 3.1, duration: 0.9, ease }}
+          animate={showIntro ? { opacity: 0, y: 14 } : { opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.9, ease }}
         >
           Six rooms, a courtyard, and the original stone of a house that has
           stood in Gairidhara since long before the neighbourhood grew up
@@ -54,8 +79,8 @@ export default function Hero() {
         <motion.div
           className="mt-10 flex flex-col sm:flex-row items-center gap-4"
           initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 3.3, duration: 0.9, ease }}
+          animate={showIntro ? { opacity: 0, y: 14 } : { opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.9, ease }}
         >
           <a
             href="#stay"
@@ -75,8 +100,8 @@ export default function Hero() {
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 h-10 w-[1px] bg-[var(--color-paper)]/25"
         initial={{ opacity: 0, scaleY: 0 }}
-        animate={{ opacity: 1, scaleY: 1 }}
-        transition={{ delay: 3.6, duration: 0.8 }}
+        animate={showIntro ? { opacity: 0, scaleY: 0 } : { opacity: 1, scaleY: 1 }}
+        transition={{ delay: 1.1, duration: 0.8 }}
       />
     </section>
   );

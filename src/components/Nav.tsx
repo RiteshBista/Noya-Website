@@ -14,7 +14,7 @@ export default function Nav() {
       <nav className="hidden md:flex items-center gap-8 eyebrow tracking-[0.28em]">
         <a href="#rooms" className="hover:text-[var(--color-paper)] transition-colors">Rooms</a>
         <a href="#restoration" className="hover:text-[var(--color-paper)] transition-colors">Restoration</a>
-        <a href="#stay" className="hover:text-[var(--color-paper)] transition-colors">Rates</a>
+        {/* <a href="#stay" className="hover:text-[var(--color-paper)] transition-colors">Rates</a> */}
         <a href="#faq" className="hover:text-[var(--color-paper)] transition-colors">FAQ</a>
       </nav>
       <a
