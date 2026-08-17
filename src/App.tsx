@@ -4,7 +4,6 @@ import Hero from "./components/Hero";
 import RoomsGrid from "./components/RoomsGrid";
 import Restoration from "./components/Restoration";
 import Guestbook from "./components/Guestbook";
-import Rates from "./components/Rates";
 import Faq from "./components/Faq";
 import FinalCta from "./components/FinalCta";
 import Location from "./components/Location";
@@ -20,7 +19,6 @@ export default function App() {
         <RoomsGrid />
         <Restoration />
         <Guestbook />
-        <Rates />
         <Faq />
         <FinalCta />
         <Location />
