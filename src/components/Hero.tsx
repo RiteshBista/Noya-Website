@@ -8,7 +8,7 @@ export default function Hero() {
   const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
-    const t = setTimeout(() => setShowIntro(false), 5900);
+    const t = setTimeout(() => setShowIntro(false), 5000);
     return () => clearTimeout(t);
   }, []);
 
@@ -38,7 +38,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12, transition: { duration: 0.5, ease } }}
-                transition={{ delay: 2.7, duration: 1, ease }}
+                transition={{ delay: 1, duration: 0.5, ease }}
               >
                 ART &middot; HERITAGE &middot; HISTORY
               </motion.span>
