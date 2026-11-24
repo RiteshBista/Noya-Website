@@ -141,3 +141,12 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# videos
+src/assets/video1.mov
+src/assets/video2.mp4src/assets/video1.mov
+src/assets/video2.mp4
+
+# raw/uncompressed video masters — never shipped to public/, kept locally
+# (or move to proper cloud/CDN asset storage) rather than committed to git
+video-masters/

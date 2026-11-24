@@ -1,0 +1,13 @@
+# Serve index.html for any path that isn't a real file/directory, so
+# React Router's client-side routes (e.g. /hotel, /art, /reserve) resolve
+# correctly on direct load, page refresh, or a shared/bookmarked deep link
+# instead of the server returning its own 404 for a path it doesn't have
+# a file for.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
