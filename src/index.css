@@ -1,39 +1,295 @@
 @import "tailwindcss";
 
+/* ---- Fonts: Inter for all website text, self-hosted (the exact files
+   Google Fonts serves for `Inter:wght@300;400;500;600`, same unicode-range
+   split and `font-display: swap`). Inter is one variable file covering
+   every weight the site uses. The one exception is the desktop navbar
+   link labels, set in Instrument Serif (see `.nav-serif` below). ---- */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url("/fonts/inter-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Instrument Serif (SIL OFL: /fonts/OFL-InstrumentSerif.txt): the display
+   face for headings (`font-display`) and the desktop navbar labels. The
+   family ships a single weight (400), upright and italic, so each is
+   declared as exactly that: the browser uses the real faces and never
+   synthesizes a lighter or heavier one. */
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-italic-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 @theme {
-  /* ---- NOYA design tokens ---- */
-  /* backgrounds: warm heritage charcoal, not pure obsidian */
-  --color-ink:        #191C16;   /* base background */
-  --color-ink-2:      #14160F;   /* deepest, footer / final CTA */
-  --color-panel:      #21261D;   /* raised surfaces */
+  /* ---- NOYA design tokens — luxury hospitality: warm white + near-black
+     editorial typography + a restrained muted-green signature accent. ---- */
 
-  /* accent: sage / moss, drawn from the brand's outer facade palette */
-  --color-sage:       #A9BC98;   /* primary accent (replaces "acid lime") */
-  --color-sage-dim:   #7C8E6B;   /* moss, hovered / muted accent */
-  --color-sage-deep:  #4B5A3D;
+  /* backgrounds: a warm off-white reads as the site's default, with a
+     slightly warmer/cooler pair alternating section-to-section for quiet
+     separation, plus a pure-white "surface" tone for cards/inputs/menus
+     that need to lift off the page. */
+  --color-background:            #FDFCF9; /* main site background */
+  --color-background-secondary:  #F6F5F1; /* alternate section background */
+  --color-surface:                #FFFFFF; /* cards, raised panels, menus, inputs */
+  /* footer only: the deepest step of the brand green (same value as
+     --color-primary-active), with warm ivory text instead of pure white. */
+  --color-background-footer:      #2D3A2C;
+  --color-text-on-green:           #F3EFE4;
+  --color-text-on-green-secondary: rgba(243,239,228,0.76);
+  --color-text-on-green-label:     #B4C3A8; /* eyebrows, ~6:1 on the footer green */
+  --color-divider-on-green:        rgba(243,239,228,0.14);
+  --color-brass-on-green:          #D9B98A; /* site credit highlight, ~6.4:1 on the footer green */
 
-  /* secondary accent: dusty rose, drawn from the interior palette — used only in Guestbook */
-  --color-rose:       #B79184;
+  /* the one deliberate dark tone in the system — used only for sections
+     meant to read as a dark editorial/luxury moment (closing CTAs, the
+     Guestbook, the footer, and the scrim behind text over full-bleed
+     photography/video). Not the default background anywhere. */
+  --color-background-dark: #171714;
 
-  /* text */
-  --color-paper:       #F4F1E9;  /* warm white */
-  --color-paper-dim:   rgba(244,241,233,0.66);
-  --color-paper-faint: rgba(244,241,233,0.40);
+  /* text on light backgrounds — a warm near-black rather than pure black,
+     for a softer editorial feel. */
+  --color-text:           #171714; /* headings, primary text */
+  --color-text-secondary: #383833; /* secondary body text */
+  --color-text-muted:     #6F6E68; /* supporting/muted text — 4.7:1 on the grey section background (#74736D was 4.36:1) */
+  --color-text-faint:     #A09F98; /* decorative/very low-priority text only */
 
-  /* lines & glass */
-  --color-hairline:   rgba(244,241,233,0.10);
-  --color-hairline-2: rgba(244,241,233,0.06);
-  --color-glass:       rgba(244,241,233,0.045);
+  /* text on the dark accent background */
+  --color-text-on-dark:           #FFFFFF;
+  --color-text-on-dark-secondary: rgba(255,255,255,0.72);
+  --color-text-on-dark-muted:     rgba(255,255,255,0.52);
+  --color-text-on-dark-faint:     rgba(255,255,255,0.40);
 
-  --font-display: "Instrument Serif", "Times New Roman", serif;
+  /* primary accent — a deep, mineral botanical green (think aged pigment
+     or architectural patina, not a bright/SaaS green), restrained and used
+     as a signature accent (CTAs, hovers, eyebrows, active states) rather
+     than a dominant color. Slightly darker and less saturated than a
+     typical "success" green so it reads as heritage rather than corporate,
+     even filled solid on a button. */
+  --color-primary:        #46583F;
+  --color-primary-hover:  #384737;
+  --color-primary-active: #2D3A2C;
+  /* lighter variants for use on the dark background above, where the base
+     green doesn't have enough contrast against near-black */
+  --color-primary-on-dark:       #7C9271;
+  --color-primary-on-dark-hover: #96A98B;
+
+  /* secondary accent: dusty rose — unchanged, still used only in Guestbook */
+  --color-rose: #B79184;
+
+  /* lines, on light backgrounds */
+  --color-border:   rgba(23,23,20,0.12);
+  /* form fields, where the underline is the only affordance */
+  --color-border-strong: rgba(23,23,20,0.48); /* ~3:1 on the page, WCAG 1.4.11 */
+  --color-divider:  rgba(23,23,20,0.07);
+  --color-glass:    rgba(23,23,20,0.04);
+
+  /* lines, inside the dark accent background */
+  --color-border-dark:  rgba(255,255,255,0.12);
+  --color-divider-dark: rgba(255,255,255,0.06);
+
+  /* Display headings: Instrument Serif, a condensed editorial serif, set
+     against Inter for body and interface text. Serif for what is read as a
+     headline, sans for what is read as text. */
+  --font-display: "Instrument Serif", "Times New Roman", Georgia, serif;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   --radius-noya: 4px;
+
+  /* ---- Type scale: the one set of sizes used across the site. Each token
+     generates a `text-*` utility (with its own line-height) and scales
+     fluidly between a 390px phone and a 1440px desktop. Use these rather
+     than one-off `text-[..px]` / `text-[clamp(..)]` sizes.
+     Sizes are given as phone → desktop. */
+  /* Display sizes are set for Instrument Serif, which is condensed and has
+     a small x-height: it needs roughly 1.4× the size of a sans to carry
+     the same weight on the page. Each role steps down clearly from the
+     one above it (hero → statement → section → item → subtitle), and the
+     largest sizes are held back so headings lead the content rather than
+     dominate it. */
+  /* Home hero H1: 44 → 72px */
+  --text-display-xl: clamp(2.75rem, 2.1rem + 2.667vw, 4.5rem);
+  --text-display-xl--line-height: 1;
+  /* Page hero H1 (every interior page, Legal, 404): 40 → 64px */
+  --text-display-lg: clamp(2.5rem, 1.943rem + 2.286vw, 4rem);
+  --text-display-lg--line-height: 1.02;
+  /* Statement / closing-band H2 (page intros, partner and CTA bands): 34 → 44px */
+  --text-heading-lg: clamp(2.125rem, 1.893rem + 0.952vw, 2.75rem);
+  --text-heading-lg--line-height: 1.06;
+  /* Section H2: 30 → 36px */
+  --text-heading: clamp(1.875rem, 1.736rem + 0.571vw, 2.25rem);
+  --text-heading--line-height: 1.1;
+  /* Card / item H3, pull quotes, mobile menu links: 22 → 26px */
+  --text-title: clamp(1.375rem, 1.282rem + 0.381vw, 1.625rem);
+  --text-title--line-height: 1.2;
+  /* Editorial subtitle under an item heading (a second, quieter serif
+     line): 20 → 22px */
+  --text-subtitle: clamp(1.25rem, 1.204rem + 0.19vw, 1.375rem);
+  --text-subtitle--line-height: 1.25;
+  /* Hero standfirst, FAQ questions: 17 → 19px */
+  --text-lead: clamp(1.0625rem, 1.016rem + 0.19vw, 1.1875rem);
+  --text-lead--line-height: 1.6;
+  /* Body copy: 16 → 17px (16px floor on phones, for legibility and so iOS
+     never zooms a form) */
+  --text-body: clamp(1rem, 0.977rem + 0.095vw, 1.0625rem);
+  --text-body--line-height: 1.7;
+  /* Secondary copy (card descriptions, contact details, footer): 14px */
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.6;
+  /* Captions and image credits: 13 → 14px */
+  --text-caption: clamp(0.8125rem, 0.789rem + 0.095vw, 0.875rem);
+  --text-caption--line-height: 1.55;
+  /* Eyebrows and metadata labels (uppercase): 11 → 12px */
+  --text-label: clamp(0.6875rem, 0.664rem + 0.095vw, 0.75rem);
+  --text-label--line-height: 1.5;
+  --text-label--letter-spacing: 0.2em;
+  /* Desktop navigation links: 18px, sentence case, no tracking (Instrument
+     Serif is condensed, so 16px read small beside the logo and button) */
+  --text-nav: 1.125rem;
+  --text-nav--line-height: 1.2; /* keeps the header at its standardized height */
+  --text-nav--letter-spacing: 0em;
+  /* Uppercase buttons and text links: 13px */
+  --text-button: 0.8125rem;
+  --text-button--line-height: 1.25; /* same 16px line box as before, so button heights are unchanged */
+  --text-button--letter-spacing: 0.14em;
+  --tracking-display: -0.01em;
+
+  /* ---- Containers: the four content widths every section is built on.
+     Each generates a `max-w-*` utility (max-w-page, max-w-editorial…), and
+     sits inside the shared page gutter (px-6 phones, px-10 from md), so
+     equivalent sections across pages share the same left edge. ---- */
+  /* Hero text column and full-bleed galleries: 1360px */
+  --container-wide: 85rem;
+  /* Default section container (most pages): 1280px */
+  --container-page: 80rem;
+  /* Long-read editorial pages (Art, History, Heritage): 1100px */
+  --container-editorial: 68.75rem;
+  /* Centred statement or feature block: 860px */
+  --container-reading: 53.75rem;
+  /* A single column of running text (page intros, legal): 700px */
+  --container-column: 43.75rem; /* not "prose": Tailwind reserves max-w-prose (65ch) */
+
+  /* section rhythm — a section that directly continues a same-background
+     section (no divider) uses this short top step instead of the full
+     padding, so the pair reads as one paced space rather than two stacked
+     paddings. 16 → 40px. */
+  --spacing-section-follow: clamp(1rem, 0.4rem + 2.4vw, 2.5rem);
+  /* Default vertical padding for a section: 48 → 80px. Use the
+     `py-section` / `pt-section` / `pb-section` utilities below. Two
+     adjacent sections put twice this between their content (~160px on a
+     desktop): generous, in proportion to the heading scale above, without
+     reading as empty bands.
+     Also capped by the viewport's height, so a short laptop screen
+     (1366×768) gets proportionally less air; tall screens are unaffected. */
+  --spacing-section: min(clamp(3rem, 2.257rem + 3.048vw, 5rem), 11svh);
+  /* A chapter break, or a band that opens a new subject: 64 → 104px. */
+  --spacing-section-lg: min(clamp(4rem, 3.071rem + 3.81vw, 6.5rem), 14svh);
+}
+
+@utility py-section {
+  padding-block: var(--spacing-section);
+}
+@utility pt-section {
+  padding-top: var(--spacing-section);
+}
+@utility pb-section {
+  padding-bottom: var(--spacing-section);
+}
+@utility py-section-lg {
+  padding-block: var(--spacing-section-lg);
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--color-ink);
+  background-color: var(--color-background);
+  /* Real height of the sticky navbar, kept in sync at runtime by Nav.tsx
+     (ResizeObserver, see useLayoutEffect there) so it always matches the
+     actual rendered header exactly, regardless of breakpoint or font
+     metrics. This value only shows for the first paint before that effect
+     runs. */
+  --nav-height: 76px;
+}
+
+/* Shared hero sizing. The navbar sits in normal document flow above the
+   hero (sticky, not an overlay), so heights are measured from what's left
+   of the viewport beneath it.
+   One rule for every hero (Home, Discover and every PageHero page):
+   - fills the rest of the viewport under the nav, capped on very tall
+     desktop screens so the frame isn't mostly crop;
+   - tablet portrait: a 16:9 film cropped into a ~950px-tall frame is
+     mostly guesswork, so it caps at roughly three-quarters of the screen.
+   Phones keep full height, where a tall frame suits portrait use. */
+.hero-viewport {
+  height: min(calc(100svh - var(--nav-height)), 880px);
+  min-height: 520px;
+}
+@media (min-width: 640px) and (max-aspect-ratio: 4/5) {
+  .hero-viewport {
+    height: 72svh;
+  }
+}
+/* Phones: stop just short of the full screen, so the top of the next
+   section shows and the page reads as something to scroll. */
+@media (max-width: 639px) {
+  .hero-viewport {
+    height: calc(100svh - var(--nav-height) - 3.5rem);
+  }
+}
+/* Room detail pages share one frame. Minimum height lets complete copy and
+   wrapped actions expand naturally on short screens or with larger text. */
+@media (min-width: 1024px) {
+  .room-detail-hero {
+    display: flex;
+    min-height: calc(100dvh - var(--nav-height));
+  }
+
+  .room-detail-hero__inner {
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+
+  .room-detail-hero__image {
+    /* Keep the same aspect ratio even when the viewport is unusually short. */
+    max-width: max(240px, calc((100dvh - var(--nav-height) - 6rem) * 4 / 3));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -43,47 +299,154 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--color-ink);
-  color: var(--color-paper);
+  background-color: var(--color-background);
+  color: var(--color-text);
   font-family: var(--font-sans);
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--color-sage);
-  color: var(--color-ink);
+  background: var(--color-primary);
+  color: var(--color-text-on-dark);
 }
 
-/* focus ring */
+/* Display-face section headings without their own leading class inherited
+   the body's 1.5 line-height (e.g. 40px type on a 60px line), which added
+   ~10px of invisible space above and below and made heading→text gaps
+   vary from section to section. 1.1 matches the leading the Home section
+   headings already use; any explicit `leading-*` utility still wins. */
+@layer base {
+  h2.font-display,
+  h3.font-display {
+    line-height: 1.1;
+  }
+  /* Display headings: Instrument Serif's single real weight, with a hair
+     of negative tracking so large sizes close up like set type. Explicit
+     font-weight / tracking utilities still win. */
+  .font-display {
+    font-weight: 400;
+    letter-spacing: -0.008em;
+    font-kerning: normal;
+    text-wrap: balance;
+  }
+  /* The italic face, for a standfirst or a single emphasised phrase. */
+  .font-display-italic {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  /* Body copy is justified site-wide from 640px (tablet and desktop):
+     paragraphs set as body or lead text, directly, or inherited from a
+     `text-body` container or a container's `[&>p]:text-body`.
+     Every other text role keeps its own alignment: headings, display lines,
+     eyebrows, captions and small metadata (none carry these classes), the
+     hero overlays, and anything inside a centred block (which it inherits
+     there; justifying would pull a centred line to the left). An alignment
+     utility on the paragraph itself still wins, being a later layer.
+     Words are never split: justification only widens the spaces between
+     whole words (hyphens: none; no word-break / overflow-wrap rules apply).
+     Phones stay ragged-right: a ~340px column holds only 5–7 words a line,
+     and justified it opened gaps of 3–8 spaces in over 60% of paragraphs
+     (measured at 360 and 390px). */
+  @media (min-width: 40rem) {
+    main :is(p.text-body, p.text-lead, .text-body > p, [class*="[&>p]:text-body"] > p):not(.hero-viewport *, .text-center *, [class*=":text-center"] *) {
+      text-align: justify;
+      hyphens: none;
+    }
+  }
+}
+
+/* focus ring — deliberately unlayered, so an `outline-none` utility can
+   never strip the keyboard focus indicator. */
 :focus-visible {
-  outline: 2px solid var(--color-sage);
+  outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 }
 
-.font-display { font-family: var(--font-display); }
-.font-sans { font-family: var(--font-sans); }
-
-.eyebrow {
-  font-family: var(--font-sans);
-  text-transform: uppercase;
-  letter-spacing: 0.36em;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--color-sage);
+/* On the dark surfaces (footer, Guestbook, closing CTA bands) and over
+   hero video, the green ring above measures ~2.3:1 against #171714 —
+   switch to the on-dark green (~5.3:1). Dark sections are matched by the
+   `bg-[var(--color-background-dark)]` utility they all already use; hero
+   content and video controls opt in with `.focus-on-dark`. */
+.bg-\[var\(--color-background-dark\)\] :focus-visible,
+.focus-on-dark :focus-visible {
+  outline-color: var(--color-primary-on-dark);
+}
+/* The green footer: the green rings above barely show on green, so ivory. */
+.bg-\[var\(--color-background-footer\)\] :focus-visible {
+  outline-color: var(--color-text-on-green);
 }
 
-.grain::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.05;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+/* Shared component classes live in Tailwind's `components` layer, below
+   `utilities`, so per-use overrides like `text-[10px]`, `tracking-[0.12em]`
+   or `text-[var(--color-primary-on-dark)]` actually win. Unlayered CSS beats
+   every layered rule regardless of specificity, which previously made all
+   of those overrides silently ignored. (`font-display` / `font-sans` need no
+   rule here — Tailwind generates them from the `--font-*` theme tokens.) */
+@layer components {
+  /* Eyebrows are the site's small-caps section labels — this is the
+     signature spot for the green accent: a quiet, consistent brand touch
+     that appears constantly without ever dominating a page. */
+  .eyebrow {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: var(--text-label);
+    line-height: var(--text-label--line-height);
+    font-weight: 500;
+    color: var(--color-primary);
+  }
 
-.hairline { border-color: var(--color-hairline); }
+  /* Desktop navbar link labels. Size, tracking and colour still come from
+     the nav's `text-nav` and colour utilities; only the face changes. */
+  .nav-serif {
+    font-family: "Instrument Serif", "Times New Roman", serif;
+    font-weight: 400;
+  }
+
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .hairline { border-color: var(--color-border); }
+
+  /* Breakout grid for sections whose media runs past the content column to
+     a viewport edge. The middle track is exactly the site's usual content
+     box (a max-w-[1280px] container with px-6 / md:px-10 gutters), and the
+     named lines let a child span to either edge:
+       default            content-start / content-end
+       col-[full]         edge to edge
+       col-[content-start/full-end]   content margin → right edge
+       col-[full-start/content-end]   left edge → content margin
+     No negative margins or 100vw maths, so no scrollbar-width overshoot
+     and no page-level horizontal scroll. */
+  /* --bleed-content-max: the widest the content track gets. The default
+     keeps the original 1280px-minus-gutters column; a page whose other
+     sections use a 1280px content box (px-10 section + 1280px container,
+     e.g. Home) sets it to 1280px so every section shares one left edge. */
+  .bleed-grid {
+    --bleed-gutter: 1.5rem;
+    --bleed-content-max: calc(1280px - 2 * var(--bleed-gutter));
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(var(--bleed-gutter), 1fr)
+      [content-start] min(100% - 2 * var(--bleed-gutter), var(--bleed-content-max))
+      [content-end] minmax(var(--bleed-gutter), 1fr) [full-end];
+  }
+  @media (min-width: 768px) {
+    .bleed-grid { --bleed-gutter: 2.5rem; }
+  }
+  :where(.bleed-grid > *) { grid-column: content; }
+}
 
 /* marquee */
 .marquee-track {
@@ -104,4 +467,17 @@ body {
   transition: grid-template-rows 320ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .accordion-panel.open { grid-template-rows: 1fr; }
-.accordion-panel > div { overflow: hidden; }
+/* min-height: 0 is required here — a grid item's default min-height:auto
+   sizes its row by content regardless of the 0fr track above, so without
+   it the "collapsed" state never actually reaches zero height. */
+.accordion-panel > div { overflow: hidden; min-height: 0; }
+
+/* Hide scrollbar but keep scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Opera */
+}
